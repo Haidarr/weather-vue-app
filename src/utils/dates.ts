@@ -27,6 +27,7 @@ export const formatDateTime = (dateString: string): string => {
       month: "short",
       day: "2-digit",
       hour: "numeric",
+      minute: "numeric",
   }).format(date);
 };
 
