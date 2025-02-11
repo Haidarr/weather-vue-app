@@ -22,10 +22,10 @@ pnpm install
 ```
 
 ### 2. Copy Environment Variables
-Create a `.env` file by copying from `.example.env`:
+Create a `.env` file by copying from `.env.example`:
 
 ```sh
-cp .example.env .env
+cp .env.example .env
 ```
 
 Modify the `.env` file with the necessary configuration.
