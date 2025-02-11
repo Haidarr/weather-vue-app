@@ -15,7 +15,6 @@ const showList = computed(() => {
 const onChangeCity = (city: string) => {
   searchQuery.value = "";
   weatherStore.selectedCity =  city;
-  weatherStore.addCity(city);
   weatherStore.onChangeCity(city);
 };
 

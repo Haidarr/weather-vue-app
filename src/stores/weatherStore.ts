@@ -39,16 +39,20 @@ export const useWeatherStore = defineStore('weather', {
 
     async onChangeCity(city: string) {
       if (!city) return;
+      this.addCityToTabs(city);
       await this.loadWeatherData(city);
+      // Change route to selected city
       router.replace({ path: `/${city}` });
     },
 
     refreshWeatherData() {
+      // Refresh weather data
       this.weatherData = {};
       this.loadWeatherData(this.selectedCity);
     },
 
-    addCity(city: string) {
+    addCityToTabs(city: string) {
+      // Add new city to tabs when impliment search, and prevent adding the same city twice
       if (this.mainCities.includes(city)) return;
       this.mainCities.push(city);
     }

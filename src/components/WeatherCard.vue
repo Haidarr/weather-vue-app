@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useWeatherStore } from '@/stores/weatherStore';
+import { useRoute } from 'vue-router';
+
 import { 
   IonSpinner,
   IonSegmentView, 
@@ -11,20 +13,30 @@ import {
 } from '@ionic/vue';
 import { refresh } from 'ionicons/icons';
 
+const currentCity = useRoute().params.city as string;
+
 const weatherStore = useWeatherStore();
 
-const getCity = computed(() => {
-  return weatherStore.selectedCity;
-});
-
 const fetchWeatherData = async () => {
-  console.log('fetchWeatherData');
   if (!weatherStore.weatherData || !weatherStore.weatherData[weatherStore.selectedCity]) {
     await weatherStore.loadWeatherData(weatherStore.selectedCity);
   }
 };
 
-fetchWeatherData();
+const getCity = computed(() => {
+  return weatherStore.selectedCity;
+});
+
+if(currentCity && weatherStore.selectedCity !== currentCity) {
+  weatherStore.selectedCity = currentCity;
+  weatherStore.onChangeCity(currentCity);
+} else {
+  fetchWeatherData();
+}
+
+
+
+
 </script>
 
 <template>
