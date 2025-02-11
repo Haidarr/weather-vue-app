@@ -23,7 +23,7 @@ const fetchWeatherData = async () => {
   }
 };
 
-const getCity = computed(() => {
+const selectedCity = computed(() => {
   return weatherStore.selectedCity;
 });
 
@@ -37,7 +37,7 @@ if(currentCity && weatherStore.selectedCity !== currentCity) {
 
 <template>
     <ion-segment-view>
-      <ion-segment-content :id="weatherStore.selectedCity">
+      <ion-segment-content :id="selectedCity">
         <div v-if="weatherStore.loading" class="loading-container">
           <IonSpinner name="dots" />
           <p>Loading ...</p>
@@ -48,8 +48,8 @@ if(currentCity && weatherStore.selectedCity !== currentCity) {
         </div>
 
         <template v-else>
-          <NextHoursForecast :currentCity="getCity"/>
-          <FiveDaysForecast :currentCity="getCity"/>
+          <NextHoursForecast :currentCity="selectedCity"/>
+          <FiveDaysForecast :currentCity="selectedCity"/>
         </template>
 
       </ion-segment-content>

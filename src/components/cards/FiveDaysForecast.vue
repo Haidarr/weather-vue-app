@@ -26,7 +26,7 @@ const props = defineProps<{
         </ion-card-header>
         <ion-card-content>
             <ion-list>
-                <ion-item v-for="item in processWeatherData(weatherStore.weatherData[currentCity]?.list) " :key="item.date">
+                <ion-item v-for="item in processWeatherData(weatherStore.weatherData[currentCity]?.list)" :key="item.date">
                 <ion-thumbnail slot="start">
                     <img alt="Silhouette of mountains" 
                     :src="getWeatherIconUrl(item.condition?.icon)" />

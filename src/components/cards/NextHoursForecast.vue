@@ -1,5 +1,6 @@
 
 <script setup lang="ts">
+import { computed } from 'vue';
 import { useWeatherStore } from '@/stores/weatherStore'
 import { getWeatherIconUrl } from '@/utils/helper';
 import { formatTime } from '@/utils/dates';
@@ -18,6 +19,9 @@ const props = defineProps<{
   currentCity: string;
 }>();
 
+const weatherData = computed(() => {
+  return weatherStore.weatherData[props.currentCity]?.list;
+});
 </script>
 <template>
     <ion-card>
@@ -27,7 +31,7 @@ const props = defineProps<{
         <ion-card-content>
             <ion-segment  
                 :scrollable="true" >
-              <template v-for="(item, index) in weatherStore.weatherData[currentCity]?.list" :key="index">
+              <template v-for="(item, index) in weatherData" :key="index">
                 <ion-segment-button class="text-center">
                     <img :alt="item.weather[0]?.description" 
                         :src="getWeatherIconUrl(item.weather[0]?.icon)" 
