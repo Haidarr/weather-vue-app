@@ -15,7 +15,7 @@ const showSearch = ref(false);
             </ion-buttons>      
         </ion-toolbar>
         <ion-toolbar  color="primary" v-if="showSearch">
-            <SearchBar />
+            <SearchBar @hideSearchbar="showSearch = false" />
         </ion-toolbar>
     </ion-header>
 </template>

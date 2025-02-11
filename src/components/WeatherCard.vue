@@ -33,10 +33,6 @@ if(currentCity && weatherStore.selectedCity !== currentCity) {
 } else {
   fetchWeatherData();
 }
-
-
-
-
 </script>
 
 <template>

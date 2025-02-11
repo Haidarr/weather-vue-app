@@ -3,7 +3,7 @@ import { computed } from "vue";
 import { useCities } from "@/composables/useCities";
 import { useWeatherStore } from '@/stores/weatherStore';
 import { IonSearchbar, IonList, IonItem, IonLabel, IonSpinner } from "@ionic/vue";
-
+const emit = defineEmits(["hideSearchbar"]);
 const { loadCities } = useCities();
 const weatherStore = useWeatherStore();
 const { filteredCities, searchQuery, isLoading } = useCities();
@@ -16,6 +16,7 @@ const onChangeCity = (city: string) => {
   searchQuery.value = "";
   weatherStore.selectedCity =  city;
   weatherStore.onChangeCity(city);
+  emit("hideSearchbar");
 };
 
 loadCities();
