@@ -1,5 +1,9 @@
 # Simple Weather App
 
+## About The App
+
+This web application was built using Ionic 8 + Vue 3 + Vite 6.
+
 ## Getting Started
 
 Follow these steps to set up and run the project locally.
